@@ -1,4 +1,4 @@
-use interceptor::{syscall, Interceptor};
+use interceptor_rs::{syscall, Interceptor};
 use std::{
     env::args,
     ffi::{c_char, CStr, CString},

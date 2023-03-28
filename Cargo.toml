@@ -1,6 +1,6 @@
 [package]
 edition = "2021"
-name = "interceptor"
+name = "interceptor-rs"
 version = "0.1.0"
 description = "Interceptor is a lib based on `ptrace` that intercepts and modifies Linux system calls."
 license = "MIT"

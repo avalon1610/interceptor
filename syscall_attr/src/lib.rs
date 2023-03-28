@@ -103,7 +103,7 @@ fn expand(_args: Vec<NestedMeta>, mut input: ItemFn) -> Result<proc_macro2::Toke
         // in other words, pre_func == origin_func
         (
             quote!(),
-            quote!(interceptor::syscall::Variant::<#sig_ret, #(#args),*>::Block(interceptor::syscall::BlockVariant::#fn_variant(#ident_pre))),
+            quote!(interceptor_rs::syscall::Variant::<#sig_ret, #(#args),*>::Block(interceptor_rs::syscall::BlockVariant::#fn_variant(#ident_pre))),
         )
     } else {
         sig_pre.output = ReturnType::Type(
@@ -128,7 +128,7 @@ fn expand(_args: Vec<NestedMeta>, mut input: ItemFn) -> Result<proc_macro2::Toke
         );
         (
             quote!((#real_args)),
-            quote!(interceptor::syscall::Variant::<#sig_ret, #(#args),*>::Passthrough(interceptor::syscall::PassthroughVariant::#fn_variant(#ident_pre))),
+            quote!(interceptor_rs::syscall::Variant::<#sig_ret, #(#args),*>::Passthrough(interceptor_rs::syscall::PassthroughVariant::#fn_variant(#ident_pre))),
         )
     };
 
@@ -177,7 +177,7 @@ fn expand(_args: Vec<NestedMeta>, mut input: ItemFn) -> Result<proc_macro2::Toke
         }
 
         #[allow(non_upper_case_globals)]
-        #vis static #ident: interceptor::syscall::SysCall<#sig_ret, #(#args),*> = interceptor::syscall::SysCall {
+        #vis static #ident: interceptor_rs::syscall::SysCall<#sig_ret, #(#args),*> = interceptor_rs::syscall::SysCall {
             name: #ident_str,
             pre: #pre_func,
             post: #ident_post,

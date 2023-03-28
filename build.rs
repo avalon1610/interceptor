@@ -30,7 +30,7 @@ fn main() {
     if !Path::new("mem").exists() {
         return;
     }
-    
+
     let out_dir = var("OUT_DIR").expect("env OUT_DIR not found");
     let out_dir = Path::new(&out_dir);
     let target_dir = find_target_dir(out_dir).expect("can not found target dir");
@@ -57,7 +57,7 @@ fn main() {
     let output = cmd.output().unwrap();
     if !output.status.success() {
         panic!(
-            "interceptor generate {} error:\n{}",
+            "intercept generate {} error:\n{}",
             INTER_MEM_NAME,
             String::from_utf8_lossy(&output.stderr)
         );
