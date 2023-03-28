@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for arg do
+    shift
+    case $arg in
+        (-lgcc_s) : ;;
+            (*) set -- "$@" "$arg" ;;
+    esac
+done
+
+# replace 'cc' with the linker driver you actually want to invoke (most likely $CC)
+exec cc "$@" -lgcc_eh -lc
+
