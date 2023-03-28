@@ -27,6 +27,10 @@ const INTER_MEM_NAME: &str = "libinter_mem.so";
 fn main() {
     println!("cargo:rerun-if-changed=mem");
 
+    if !Path::new("mem").exists() {
+        return;
+    }
+    
     let out_dir = var("OUT_DIR").expect("env OUT_DIR not found");
     let out_dir = Path::new(&out_dir);
     let target_dir = find_target_dir(out_dir).expect("can not found target dir");
